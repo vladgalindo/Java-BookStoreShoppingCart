@@ -2,6 +2,7 @@ package com.pluralsight;
 
 import java.util.ArrayList;
 import javax.inject.Inject;
+import javax.persistence.Index;
 
 public class ShoppingCart {
  @Inject
@@ -58,6 +59,16 @@ public class ShoppingCart {
    this.cartItems.remove(index);
   }
   catch (IndexOutOfBoundsException e){
+   e.printStackTrace();
+  }
+ }
+
+ public void updateCartItem(int index, int quantity) {
+  try {
+   CartItem item = this.cartItems.get(index);
+   item.setQuantity(quantity);
+  }
+  catch (IndexOutOfBoundsException e) {
    e.printStackTrace();
   }
  }
